@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Islamabad & Topi Weather</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Local weather</h1>
+      <p class="subtitle">Islamabad · Topi</p>
+    </header>
+
+    <p id="status" class="status" role="status">Fetching forecast…</p>
+    <p id="error" class="error" hidden></p>
+
+    <main id="cards" class="cards" hidden>
+      <article class="card" data-city="islamabad">
+        <h2>Islamabad</h2>
+        <p class="temp"><span class="temp-value">--</span><span class="unit">°C</span></p>
+        <p class="range">Today --° / --° · Tomorrow --° / --°</p>
+        <p class="highlight">—</p>
+      </article>
+      <article class="card" data-city="topi">
+        <h2>Topi</h2>
+        <p class="temp"><span class="temp-value">--</span><span class="unit">°C</span></p>
+        <p class="range">Today --° / --° · Tomorrow --° / --°</p>
+        <p class="highlight">—</p>
+      </article>
+    </main>
+
+    <footer>
+      <p>Forecast by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+    </footer>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
