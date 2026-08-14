@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="web">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,93 +10,308 @@
       href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,640&family=Outfit:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="popup.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100vh;
+        padding: 32px 20px 48px;
+        font-family: "Outfit", "Segoe UI", sans-serif;
+        color: #f7f4ea;
+        background: #0b2414;
+      }
+
+      .wrap {
+        width: min(720px, 100%);
+        margin: 0 auto;
+      }
+
+      .badge {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 4px 10px;
+        border: 1px solid rgba(232, 197, 71, 0.55);
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #e8c547;
+      }
+
+      .hero {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 8px;
+      }
+
+      .crest {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+      }
+
+      h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 32px;
+        font-weight: 640;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+
+      .subtitle {
+        margin-top: 4px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #cfe3c8;
+      }
+
+      .note {
+        margin: 14px 0 22px;
+        font-size: 15px;
+        line-height: 1.55;
+        color: #cfe3c8;
+      }
+
+      .status,
+      .error {
+        margin-bottom: 14px;
+        font-size: 14px;
+      }
+
+      .status {
+        color: #d7e8d1;
+      }
+
+      .error {
+        color: #4a1020;
+        background: #f3d0d4;
+        border-radius: 8px;
+        padding: 8px 10px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        background: #f7f4ea;
+        color: #14301c;
+        border: 1px solid rgba(232, 197, 71, 0.45);
+        border-radius: 16px;
+        padding: 16px 18px;
+      }
+
+      h2 {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #01411c;
+      }
+
+      .temp {
+        margin-top: 4px;
+        font-family: "Fraunces", Georgia, serif;
+        font-size: 44px;
+        font-weight: 640;
+        line-height: 1.1;
+        color: #013516;
+      }
+
+      .unit {
+        margin-left: 4px;
+        font-family: "Outfit", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #4d6b52;
+      }
+
+      .range {
+        margin-top: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #4d6b52;
+      }
+
+      .highlight {
+        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #8a6a10;
+        line-height: 1.35;
+      }
+
+      footer {
+        margin-top: 22px;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #cfe3c8;
+      }
+
+      footer a {
+        color: #e8c547;
+        text-decoration: none;
+      }
+
+      @media (max-width: 640px) {
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 26px;
+        }
+      }
+    </style>
   </head>
   <body>
-    <section class="demo">
-      <p class="demo-kicker">Hackathon demo</p>
-      <h1 class="demo-title">Personal weather extension</h1>
-      <p class="demo-copy">
-        A Chrome/Edge toolbar extension for Islamabad and Topi. This page is the
-        live popup — pin the extension, click the icon, and the same card opens.
-      </p>
-
-      <div class="browser" aria-label="Browser mockup of the extension popup">
-        <div class="browser-bar">
-          <div class="browser-dots" aria-hidden="true">
-            <span></span><span></span><span></span>
-          </div>
-          <div class="browser-url">chrome://newtab</div>
-          <div class="browser-actions" aria-hidden="true">
-            <span class="ext-slot is-active" title="Personal Weather">
-              <svg viewBox="0 0 48 48">
-                <circle cx="24" cy="24" r="23" fill="#01411c" />
-                <path
-                  fill="#f7f4ea"
-                  d="M28.2 12.4a11.4 11.4 0 1 0 7.4 20.1 13.6 13.6 0 1 1-7.4-20.1z"
-                />
-                <path
-                  fill="#e8c547"
-                  d="M33.6 16.2 35 20.4l4.4.3-3.4 2.8 1.1 4.2-3.5-2.5-3.5 2.5 1.1-4.2-3.4-2.8 4.4-.3z"
-                />
-              </svg>
-            </span>
-          </div>
-        </div>
-
-        <div class="browser-page">
-          <div class="popup-window">
-            <div class="flag-bar" aria-hidden="true"></div>
-            <div class="popup-inner">
-              <header>
-                <p class="badge">Personal weather extension</p>
-                <div class="title-row">
-                  <svg class="crest" viewBox="0 0 48 48" aria-hidden="true">
-                    <circle cx="24" cy="24" r="23" fill="none" stroke="#e8c547" stroke-width="1.4" />
-                    <path
-                      fill="#f7f4ea"
-                      d="M28.2 12.4a11.4 11.4 0 1 0 7.4 20.1 13.6 13.6 0 1 1-7.4-20.1z"
-                    />
-                    <path
-                      fill="#e8c547"
-                      d="M33.6 16.2 35 20.4l4.4.3-3.4 2.8 1.1 4.2-3.5-2.5-3.5 2.5 1.1-4.2-3.4-2.8 4.4-.3z"
-                    />
-                  </svg>
-                  <div>
-                    <h1>Personal Weather</h1>
-                    <p class="subtitle">Islamabad · Topi · Pakistan</p>
-                  </div>
-                </div>
-              </header>
-
-              <p id="status" class="status" role="status">Fetching forecast…</p>
-              <p id="error" class="error" hidden></p>
-
-              <main id="cards" class="cards" hidden>
-                <article class="card" data-city="islamabad">
-                  <h2>Islamabad</h2>
-                  <p class="temp"><span class="temp-value">--</span><span class="unit">°C</span></p>
-                  <p class="range">Today --° / --° · Tomorrow --° / --°</p>
-                  <p class="highlight">—</p>
-                </article>
-                <article class="card" data-city="topi">
-                  <h2>Topi</h2>
-                  <p class="temp"><span class="temp-value">--</span><span class="unit">°C</span></p>
-                  <p class="range">Today --° / --° · Tomorrow --° / --°</p>
-                  <p class="highlight">—</p>
-                </article>
-              </main>
-
-              <footer>
-                <p>Click the toolbar icon to open this popup</p>
-                <p>Forecast by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
-              </footer>
-            </div>
-          </div>
+    <div class="wrap">
+      <p class="badge">Personal weather extension</p>
+      <div class="hero">
+        <svg class="crest" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+          <circle cx="24" cy="24" r="23" fill="#01411c" stroke="#e8c547" stroke-width="1.4" />
+          <path
+            fill="#f7f4ea"
+            d="M28.2 12.4a11.4 11.4 0 1 0 7.4 20.1 13.6 13.6 0 1 1-7.4-20.1z"
+          />
+          <path
+            fill="#e8c547"
+            d="M33.6 16.2 35 20.4l4.4.3-3.4 2.8 1.1 4.2-3.5-2.5-3.5 2.5 1.1-4.2-3.4-2.8 4.4-.3z"
+          />
+        </svg>
+        <div>
+          <h1>Personal Weather</h1>
+          <p class="subtitle">Islamabad · Topi · Pakistan</p>
         </div>
       </div>
-    </section>
+      <p class="note">
+        Live demo of a Chrome/Edge toolbar extension. Click the extension icon in
+        the browser to open this same forecast as a popup.
+      </p>
 
-    <script src="popup.js"></script>
+      <p id="status" class="status" role="status">Fetching forecast…</p>
+      <p id="error" class="error" hidden></p>
+
+      <main id="cards" class="cards">
+        <article class="card" data-city="islamabad">
+          <h2>Islamabad</h2>
+          <p class="temp"><span class="temp-value">--</span><span class="unit">°C</span></p>
+          <p class="range">Today --° / --° · Tomorrow --° / --°</p>
+          <p class="highlight">—</p>
+        </article>
+        <article class="card" data-city="topi">
+          <h2>Topi</h2>
+          <p class="temp"><span class="temp-value">--</span><span class="unit">°C</span></p>
+          <p class="range">Today --° / --° · Tomorrow --° / --°</p>
+          <p class="highlight">—</p>
+        </article>
+      </main>
+
+      <footer>
+        Forecast by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>
+      </footer>
+    </div>
+
+    <script>
+      const CITIES = [
+        { id: "islamabad", name: "Islamabad", latitude: 33.6844, longitude: 73.0479 },
+        { id: "topi", name: "Topi", latitude: 34.0708, longitude: 72.6236 },
+      ];
+
+      const statusEl = document.getElementById("status");
+      const errorEl = document.getElementById("error");
+
+      function weatherPhrase(code) {
+        if (code === 0) return "Sunny";
+        if (code === 1) return "Mostly sunny";
+        if (code === 2) return "Partly cloudy";
+        if (code === 3) return "Cloudy";
+        if (code === 45 || code === 48) return "Foggy";
+        if (code >= 51 && code <= 57) return "Drizzle";
+        if (code >= 61 && code <= 67) return "Rain";
+        if (code >= 71 && code <= 77) return "Snow";
+        if (code >= 80 && code <= 82) return "Rain showers";
+        if (code === 85 || code === 86) return "Snow showers";
+        if (code >= 95) return "Thunderstorm";
+        return "Mixed skies";
+      }
+
+      function highlightLine(todayCode, tomorrowCode) {
+        return `${weatherPhrase(todayCode)} today · ${weatherPhrase(tomorrowCode).toLowerCase()} tomorrow`;
+      }
+
+      function forecastUrl(city) {
+        const params = new URLSearchParams({
+          latitude: String(city.latitude),
+          longitude: String(city.longitude),
+          current: "temperature_2m,weather_code",
+          daily:
+            "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
+          timezone: "Asia/Karachi",
+          forecast_days: "2",
+        });
+        return "https://api.open-meteo.com/v1/forecast?" + params.toString();
+      }
+
+      async function fetchCity(city) {
+        const response = await fetch(forecastUrl(city));
+        if (!response.ok) {
+          throw new Error("Weather request failed for " + city.name);
+        }
+        const data = await response.json();
+        if (data.error) {
+          throw new Error(data.reason || "Weather request failed for " + city.name);
+        }
+        return data;
+      }
+
+      function fillCard(cityId, data) {
+        const card = document.querySelector('[data-city="' + cityId + '"]');
+        card.querySelector(".temp-value").textContent = String(
+          Math.round(data.current.temperature_2m)
+        );
+        card.querySelector(".range").textContent =
+          "Today " +
+          Math.round(data.daily.temperature_2m_max[0]) +
+          "° / " +
+          Math.round(data.daily.temperature_2m_min[0]) +
+          "° · Tomorrow " +
+          Math.round(data.daily.temperature_2m_max[1]) +
+          "° / " +
+          Math.round(data.daily.temperature_2m_min[1]) +
+          "°";
+        card.querySelector(".highlight").textContent = highlightLine(
+          data.daily.weather_code[0],
+          data.daily.weather_code[1]
+        );
+      }
+
+      async function loadWeather() {
+        try {
+          const results = await Promise.all(CITIES.map(fetchCity));
+          results.forEach(function (data, index) {
+            fillCard(CITIES[index].id, data);
+          });
+          statusEl.hidden = true;
+          errorEl.hidden = true;
+        } catch (err) {
+          statusEl.hidden = true;
+          errorEl.hidden = false;
+          errorEl.textContent =
+            "Could not load the forecast. Check your internet connection and try again.";
+          console.error(err);
+        }
+      }
+
+      loadWeather();
+    </script>
   </body>
 </html>
